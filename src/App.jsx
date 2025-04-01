@@ -66,22 +66,25 @@ function App() {
     });
   }
 
+  const cartCtx = {
+    items: shoppingCart.items,
+    onAddToCart: handleAddItemToCart,
+  };
+
   return (
-    
-      <CartContext.Provider>
-        <Header
-          cart={shoppingCart}
-          onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-        />
-        <Shop>
-          {DUMMY_PRODUCTS.map((product) => (
-            <li key={product.id}>
-              <Product {...product} onAddToCart={handleAddItemToCart} />
-            </li>
-          ))}
-        </Shop>
-      </CartContext.Provider>
-   
+    <CartContext.Provider value={cartCtx}>
+      <Header
+        cart={shoppingCart}
+        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
+      />
+      <Shop>
+        {DUMMY_PRODUCTS.map((product) => (
+          <li key={product.id}>
+            <Product {...product} />
+          </li>
+        ))}
+      </Shop>
+    </CartContext.Provider>
   );
 }
 
