@@ -69,6 +69,7 @@ function App() {
   const cartCtx = {
     items: shoppingCart.items,
     onAddToCart: handleAddItemToCart,
+    onUpdateItemQuantity: handleUpdateCartItemQuantity
   };
 
   return (
